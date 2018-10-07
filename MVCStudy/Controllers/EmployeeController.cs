@@ -94,7 +94,11 @@ namespace MVCStudy.Controllers
        
 
 
-        } 
+        }
+
+        public ActionResult AddNew() {
+            return View("CreateEmployee");
+        }
     }
     
 }
