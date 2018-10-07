@@ -1,8 +1,9 @@
-﻿
+﻿@using MVCStudy.ViewModels
+@model EmployeeListViewModel
 @{
     Layout = null;
 }
-@model MVCStudy.Models.Employee
+
 <!DOCTYPE html>
 
 <html>
@@ -12,26 +13,21 @@
 </head>
 <body>
     <div>
-        @{
-            MVCStudy.Models.Employee emp = (MVCStudy.Models.Employee)ViewData["Employee"];
-        }
+       
 
-        <b>Employee Details </b><br />
-        Employee Name : @Model.FirstName @Model.LastName <br />
-        Employee Salary:
-        @if (Model.Salary > 15000)
-        {
-            <span style="background-color:yellow">
-                @Model.Salary.ToString("C")
-            </span>
-        }
-        else
-        {
-            <span style="background-color:green">
+      <table>
+          <tr>
+              <th>Employee Name</th>
+              <th>Salary</th>
+          </tr>
+          @foreach (EmployeeViewModel item  in Model.Employees ) {
+              <tr>
+                  <td>@item.EmployeeName</td>
+                  <td style="background-color:@item.SalaryColor">@item.Salary</td>
+              </tr>
 
-                @Model.Salary.ToString("C")
-            </span>
-        }
+          }
+      </table>
     </div>
 
 

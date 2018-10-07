@@ -1,4 +1,6 @@
-﻿using MVCStudy.Models;
+﻿using MVCStudy.Business;
+using MVCStudy.Models;
+using MVCStudy.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,14 +41,58 @@ namespace MVCStudy.Controllers
         }
 
         public ActionResult GetView() {
-            Employee emp = new Employee();
-            emp.FirstName = "陈";
-            emp.LastName = "聪";
-            emp.Salary = 20000;
-            ViewBag.Employee = emp;
+            //Employee emp = new Employee();
+            //emp.FirstName = "陈";
+            //emp.LastName = "聪";
+            //emp.Salary = 20000;
+            //ViewBag.Employee = emp;
+
+
             //ViewData["Employee"] = emp;
             //return View("MyView");
-            return View("MyView",emp);
+            //return View("MyView",emp);
+
+            //EmployeeViewModel vmEmp = new EmployeeViewModel();
+            //vmEmp.EmployeeName = emp.FirstName + " " + emp.LastName;
+            //vmEmp.Salary = emp.Salary.ToString("C");
+            //if (emp.Salary > 15000)           
+            //    vmEmp.SalaryColor = "yellow";            
+            //else           
+            //    vmEmp.SalaryColor = "green";           
+            //vmEmp.UserName = "Admin";
+            //return View("MyView", vmEmp);
+
+
+
+            //实验5
+            EmployeeListViewModel employeeListViewModel = new EmployeeListViewModel();
+
+            EmployeeBusinessLayer empBal = new EmployeeBusinessLayer();
+            List<Employee> employees = empBal.GetEmployees();
+
+            List<EmployeeViewModel> empViewModels = new List<EmployeeViewModel>();
+
+            foreach (Employee emp in employees)
+            {
+                EmployeeViewModel empViewModel = new EmployeeViewModel();
+                empViewModel.EmployeeName = emp.FirstName + " " + emp.LastName;
+                empViewModel.Salary = emp.Salary.ToString("C");
+                if (emp.Salary > 15000)
+                {
+                    empViewModel.SalaryColor = "yellow";
+                }
+                else
+                {
+                    empViewModel.SalaryColor = "green";
+                }
+                empViewModels.Add(empViewModel);
+            }
+            employeeListViewModel.Employees = empViewModels;
+            employeeListViewModel.UserName = "Admin";
+            return View("MyView", employeeListViewModel);
+       
+
+
         } 
     }
     
