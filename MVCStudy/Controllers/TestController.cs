@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace MVCStudy.Controllers
 {
+
     public class Customer {
         public string CustomerName { get; set; }
         public string Address { get; set; }
@@ -14,6 +15,11 @@ namespace MVCStudy.Controllers
             return this.CustomerName + "|" + this.Address;
         }
     }
+    /// <summary>
+    /// 1.访问路径 根目录/control名/action名
+    /// 2.Control 里面的每个public 方法都会自动成为一个action 可以访问
+    /// 3.用 [NonAction] 标记不变为action 的public 方法
+    /// </summary>
     public class TestController : Controller
     {
         public string GetString() {
@@ -25,5 +31,15 @@ namespace MVCStudy.Controllers
             c.Address = "Address1";
             return c;
         }
+        [NonAction]
+        public string SimpleMethod()
+        {
+            return "Hi, I am not a action method";
+        }
+
+        public ActionResult GetView() {
+            return View("MyView");
+        } 
     }
+    
 }
