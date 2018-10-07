@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVCStudy.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -38,6 +39,11 @@ namespace MVCStudy.Controllers
         }
 
         public ActionResult GetView() {
+            Employee emp = new Employee();
+            emp.FirstName = "陈";
+            emp.LastName = "聪";
+            emp.Salary = 20000;
+            ViewData["Employee"] = emp;
             return View("MyView");
         } 
     }

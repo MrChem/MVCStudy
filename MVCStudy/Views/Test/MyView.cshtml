@@ -11,8 +11,17 @@
     <title>MyView</title>
 </head>
 <body>
-    <div> 
-        Welcome to MVC 5 Step by Step learning
+    <div>
+        @{
+            MVCStudy.Models.Employee emp = (MVCStudy.Models.Employee)ViewData["Employee"];
+        }
+
+        <b>Employee Details </b><br />
+        Employee Name : @emp.FirstName @emp.LastName <br />
+        Employee Salary: @emp.Salary.ToString("C")
+    </div>
+
+
     </div>
 </body>
 </html>
