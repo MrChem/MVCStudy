@@ -43,7 +43,8 @@ namespace MVCStudy.Controllers
             emp.FirstName = "陈";
             emp.LastName = "聪";
             emp.Salary = 20000;
-            ViewData["Employee"] = emp;
+            ViewBag.Employee = emp;
+            //ViewData["Employee"] = emp;
             return View("MyView");
         } 
     }
