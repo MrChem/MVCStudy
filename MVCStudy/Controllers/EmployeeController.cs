@@ -23,7 +23,7 @@ namespace MVCStudy.Controllers
     /// 2.Control 里面的每个public 方法都会自动成为一个action 可以访问
     /// 3.用 [NonAction] 标记不变为action 的public 方法
     /// </summary>
-    public class TestController : Controller
+    public class EmployeeController : Controller
     {
         public string GetString() {
             return "Hello World is old now. It’s time for wassup bro";
@@ -40,7 +40,7 @@ namespace MVCStudy.Controllers
             return "Hi, I am not a action method";
         }
 
-        public ActionResult GetView() {
+        public ActionResult index() {
             //Employee emp = new Employee();
             //emp.FirstName = "陈";
             //emp.LastName = "聪";
@@ -88,8 +88,9 @@ namespace MVCStudy.Controllers
                 empViewModels.Add(empViewModel);
             }
             employeeListViewModel.Employees = empViewModels;
-            employeeListViewModel.UserName = "Admin";
-            return View("MyView", employeeListViewModel);
+           // employeeListViewModel.UserName = "Admin";
+
+            return View("Index", employeeListViewModel);
        
 
 
