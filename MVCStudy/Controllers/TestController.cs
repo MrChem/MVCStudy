@@ -45,7 +45,8 @@ namespace MVCStudy.Controllers
             emp.Salary = 20000;
             ViewBag.Employee = emp;
             //ViewData["Employee"] = emp;
-            return View("MyView");
+            //return View("MyView");
+            return View("MyView",emp);
         } 
     }
     
