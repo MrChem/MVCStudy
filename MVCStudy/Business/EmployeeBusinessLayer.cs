@@ -14,5 +14,12 @@ namespace MVCStudy.Business
             SalesERPDAL saleDal = new SalesERPDAL();
             return saleDal.Employees.ToList();
         }
+
+        public Employee SaveEmployee(Employee e) {
+            SalesERPDAL saleDal = new SalesERPDAL();
+            saleDal.Employees.Add(e);
+            saleDal.SaveChanges();
+            return e;
+        }
     }
 }
