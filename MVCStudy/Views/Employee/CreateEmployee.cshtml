@@ -1,4 +1,6 @@
-﻿@{
+﻿@using MVCStudy.ViewModels
+@model CreateEmployeeViewModel
+@{
     Layout = null;
 }
 
@@ -14,7 +16,7 @@
             <table>
                 <tr>
                     <td>First Name:</td>
-                    <td><input type="text" id="TxtFName" name="FirstName" value="" /></td>
+                    <td><input type="text" id="TxtFName" name="FirstName" value="@Model.FirstName" /></td>
                 </tr>
                 <tr>
                     <td colspan="2" align="right">@Html.ValidationMessage("FirstName")</td>
@@ -24,7 +26,7 @@
                         Last Name:
                     </td>
                     <td>
-                        <input type="text" id="TxtLName" name="LastName" value="" />
+                        <input type="text" id="TxtLName" name="LastName" value="@Model.LastName" />
                     </td>
                 </tr>
                 <tr>
@@ -41,7 +43,7 @@
                     </td>
 
                     <td>
-                        <input type="text" id="TxtSalary" name="Salary" value="" />
+                        <input type="text" id="TxtSalary" name="Salary" value="@Model.Salary" />
 
                     </td>
 
